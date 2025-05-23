@@ -1,0 +1,21 @@
+/* Additional custom styles for the project */
+
+.text-gradient-primary {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-blue-500;
+}
+
+.btn-primary {
+  @apply px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg shadow-lg hover:bg-indigo-700 transition-colors;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-white text-indigo-600 font-medium rounded-lg shadow-lg hover:bg-gray-50 transition-colors border border-indigo-200;
+}
+
+.section-padding {
+  @apply px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg;
+} 
