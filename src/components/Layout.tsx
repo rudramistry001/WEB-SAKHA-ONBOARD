@@ -1,38 +1,23 @@
-// components/Layout.tsx
-
 import type { ReactNode } from 'react';
-import { motion } from 'framer-motion';
-import Footer from './Footer'; // Assuming you have a Footer component
-import Navbar from './Navbar'; // Your Navbar component
+// Removed motion import as it's no longer used on the root div
+// import { motion } from 'framer-motion';
+import Navbar from './Navbar';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="min-h-screen w-full overflow-hidden"
-    >
+    // Changed from motion.div to a regular div
+    // Removed initial, animate, exit props to prevent transform interference
+    <div className="min-h-screen w-full">
       {/* Navbar is rendered here */}
       <Navbar />
 
-      {/* The pt-X here is crucial for preventing content from being hidden 
-        under the fixed Navbar.
-        You need to measure your Navbar's exact height and adjust pt-X accordingly.
-        For example, if your Navbar is 80px tall, use pt-20 (which is 80px).
-        If it's 72px, use pt-[72px] (arbitrary value).
-        Based on your screenshot, it looks like `pt-16` (64px) might be too small
-        if your navbar is taller, or your navbar itself has extra height.
-
-        Let's try a slightly larger padding first, like pt-20 or pt-24.
-        I'll use pt-20 as a common starting point for typical navbars.
-        You should verify the actual height of your Navbar component in the browser's developer tools.
+      {/* The pt-20 here is crucial for preventing content from being hidden
+          under the fixed Navbar.
+          Your Navbar is h-20 (80px), so pt-20 (80px) is the correct padding.
       */}
-      <main className="pt-20"> {/* Changed from pt-16 to pt-20. ADJUST THIS IF NEEDED. */}
+      <main className="pt-20">
           {children}
       </main>
-
-      <Footer />
-    </motion.div>
+    </div>
   );
 }

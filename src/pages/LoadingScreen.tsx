@@ -60,7 +60,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
             <motion.img 
               src={logoImage} 
               alt="App Logo" 
-              className="h-32 w-32 md:h-40 md:w-40 mb-6"
+              className="h-100 w-100 md:h-30 md:w-30 mb-6"
               initial={{ rotate: -10 }}
               animate={{ 
                 rotate: 0,
@@ -71,14 +71,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
                 }
               }}
             />
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="text-4xl md:text-5xl font-bold text-white text-center"
-            >
-              BULK <span className="text-purple-300">MS</span>
-            </motion.h1>
+           
           </motion.div>
         )}
       </AnimatePresence>
