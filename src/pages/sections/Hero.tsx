@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import logoImage from '../../assets/images/logo.png';
 import { useState, useEffect } from 'react';
 
