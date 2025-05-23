@@ -6,7 +6,9 @@ import OurProcess from './sections/OurProcesses' // Import the OurProcess compon
 import OurServices from './sections/services' // <--- NEW: Import the OurServices component
 import Layout from '../components/Layout'
 import SocialMediaMarketing from './sections/SocialMedia'
-import SoftwareDevelopment from './sections/SoftwaredDevelopment'
+import CampaignManagement from './sections/CampaignManagement'
+import FullStackOverview from './sections/FullStackOverview'
+import TechnologyStack from './sections/TechnologyStack'
 
 const Onboard: React.FC = () => {
   return (
@@ -39,10 +41,18 @@ const Onboard: React.FC = () => {
           <section id="social-media-section">
             <SocialMediaMarketing />
           </section>
+            {/* Social MediaSection */}
+          <section id="social-media-campaign-section">
+            <CampaignManagement />
+          </section>
 
           {/* Software Development Section */}
-          <section id="software-development-section">
-            <SoftwareDevelopment />
+          <section id="software-development-section-01">
+            <FullStackOverview />
+          </section>
+
+          <section id="software-development-section-02">
+            <TechnologyStack />
           </section>
 
           
