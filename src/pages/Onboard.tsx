@@ -9,6 +9,7 @@ import SocialMediaMarketing from './sections/SocialMedia'
 import CampaignManagement from './sections/CampaignManagement'
 import FullStackOverview from './sections/FullStackOverview'
 import TechnologyStack from './sections/TechnologyStack'
+import AutomationPhilosophy from './sections/AutmationPhilosophy'
 
 const Onboard: React.FC = () => {
   return (
@@ -55,7 +56,9 @@ const Onboard: React.FC = () => {
             <TechnologyStack />
           </section>
 
-          
+          <section id="software-development-section-02">
+            <AutomationPhilosophy />
+          </section>
           
         
           

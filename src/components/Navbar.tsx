@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
         { name: 'Services', id: 'our-services-section' },
         { name: 'Our Process', id: 'our-process-section' },
         { name: 'Social Media', id: 'social-media-section' },
-        { name: 'Software Dev', id: 'software-development-section' },
+        { name: 'Software Dev', id: 'software-development-section-01' }, // Changed to first software dev section
     ];
 
     // Refined mobile menu variants for smoother entry/exit
@@ -74,7 +74,8 @@ const Navbar: React.FC = () => {
 
     return (
         // The <nav> tag itself needs to be fixed and have the z-index
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 dark:bg-gray-900/80 shadow-lg backdrop-blur-md' : 'bg-transparent'}`}>
+        // Added h-20 (80px) to ensure consistent height for content padding
+        <nav className={`fixed w-full z-50 transition-all duration-300 h-20 flex items-center ${scrolled ? 'bg-white/80 dark:bg-gray-900/80 shadow-lg backdrop-blur-md' : 'bg-transparent'}`}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
                 {/* Logo/Brand Name - WEB सखा with glowing effect */}
                 <motion.div
@@ -129,7 +130,8 @@ const Navbar: React.FC = () => {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        className="md:hidden fixed top-0 left-0 w-full h-full bg-white dark:bg-gray-900 z-40 overflow-y-auto pt-24 pb-8 shadow-2xl" // Full screen overlay
+                        // Added backdrop-blur-sm and adjusted background opacity for mobile menu
+                        className="md:hidden fixed top-0 left-0 w-full h-full bg-white/95 dark:bg-gray-900/95 z-40 overflow-y-auto pt-24 pb-8 shadow-2xl backdrop-blur-sm" // Full screen overlay
                         initial="hidden"
                         animate="visible"
                         exit="exit"

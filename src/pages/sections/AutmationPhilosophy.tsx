@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useInView, useAnimation, type Variants } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faUsers, faCode, faChartLine, faShieldAlt, faEnvelope, faBrain } from '@fortawesome/free-solid-svg-icons';
-
+import { faLightbulb, faCogs, faRocket, faUsers, faCode, faChartLine, faShieldAlt, faEnvelope, faBrain } from '@fortawesome/free-solid-svg-icons';
 
 // Define variants for animation
 const sectionVariants: Variants = {
@@ -51,6 +50,30 @@ const n8nPathVariants: Variants = {
     })
 };
 
+// Helper component to render FontAwesome icons as SVG paths
+// This allows for better integration and styling within the SVG
+const SvgFontAwesomeIcon: React.FC<{ icon: any; x: number; y: number; size: number; color: string; filter?: string }> = ({ icon, x, y, size, color, filter }) => {
+    // FontAwesome SVG path data is typically in icon[4]
+    const pathData = icon.icon[4];
+    // Calculate scale to fit the icon within the desired size
+    const iconWidth = icon.icon[0];
+    const iconHeight = icon.icon[1];
+    const scale = size / Math.max(iconWidth, iconHeight);
+
+    // Adjust x, y to center the icon relative to its new size
+    const transformX = x - (iconWidth * scale) / 2;
+    const transformY = y - (iconHeight * scale) / 2;
+
+    return (
+        <path
+            d={pathData}
+            fill={color}
+            transform={`translate(${transformX}, ${transformY}) scale(${scale})`}
+            style={{ filter: filter }}
+        />
+    );
+};
+
 const AutomationPhilosophy: React.FC = () => {
     const n8nRef = useRef(null);
     const philosophyRef = useRef(null);
@@ -72,6 +95,11 @@ const AutomationPhilosophy: React.FC = () => {
             philosophyControls.start("visible");
         }
     }, [isPhilosophyInView, philosophyControls]);
+
+    // Handler for button click to navigate
+    const handleContactClick = () => {
+        window.location.href = '/contact-us';
+    };
 
     return (
         <section id="automation-philosophy" className="py-16 md:py-24 bg-gradient-to-br from-blue-50 to-cyan-100 dark:from-gray-900 dark:to-blue-950 text-gray-800 dark:text-gray-200 overflow-hidden relative font-sans">
@@ -162,14 +190,16 @@ const AutomationPhilosophy: React.FC = () => {
                                 style={{ filter: 'url(#glow)' }}
                             />
 
-                            {/* Icons within nodes (positioned with text elements) */}
-                            {/* Note: SVG text elements typically don't directly support FontAwesomeIcon. */}
-                            {/* For true SVG icons, you might embed them as SVG paths or use a more complex rendering approach. */}
-                            {/* For simplicity and common browser compatibility, you might overlay HTML icons or use a library that converts FA to SVG paths. */}
-                            {/* Here, I'm keeping your original approach, assuming a setup that handles this, or that it's a visual placeholder */}
-                            <text x="25" y="27" textAnchor="middle" dominantBaseline="middle" className="text-xs text-purple-900 dark:text-gray-900 font-bold">💡</text>
-                            <text x="75" y="52" textAnchor="middle" dominantBaseline="middle" className="text-xs text-purple-900 dark:text-gray-900 font-bold">⚙️</text>
-                            <text x="25" y="77" textAnchor="middle" dominantBaseline="middle" className="text-xs text-purple-900 dark:text-gray-900 font-bold">🚀</text>
+                            {/* Icons within nodes (rendered as SVG paths) */}
+                            <motion.g initial="hidden" animate={n8nControls} variants={n8nNodeVariants} custom={0}>
+                                <SvgFontAwesomeIcon icon={faLightbulb} x={25} y={25} size={10} color="white" filter="url(#glow)" />
+                            </motion.g>
+                            <motion.g initial="hidden" animate={n8nControls} variants={n8nNodeVariants} custom={1}>
+                                <SvgFontAwesomeIcon icon={faCogs} x={75} y={50} size={10} color="white" filter="url(#glow)" />
+                            </motion.g>
+                            <motion.g initial="hidden" animate={n8nControls} variants={n8nNodeVariants} custom={2}>
+                                <SvgFontAwesomeIcon icon={faRocket} x={25} y={75} size={10} color="white" filter="url(#glow)" />
+                            </motion.g>
                         </svg>
                     </motion.div>
                 </motion.div>
@@ -240,6 +270,7 @@ const AutomationPhilosophy: React.FC = () => {
                         className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white font-bold text-xl rounded-full shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-opacity-50 group"
                         whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(99, 102, 241, 0.4)" }}
                         whileTap={{ scale: 0.95 }}
+                        onClick={handleContactClick} // Added onClick handler
                     >
                         <FontAwesomeIcon icon={faEnvelope} className="mr-4 text-white group-hover:animate-pulse" />
                         Let's Talk About Your Project
