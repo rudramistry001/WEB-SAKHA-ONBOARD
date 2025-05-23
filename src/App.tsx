@@ -25,10 +25,9 @@ function App() {
             This route now directly navigates to /onboard when the base URL (/) is accessed.
             The LoadingScreen will no longer be displayed on the initial load of the base URL.
           */}
-          <Route path="/" element={<Navigate to="/onboard" replace />} />
+          <Route path="/" element={<Onboard />} />
 
           {/* Other routes remain unchanged */}
-          <Route path="/onboard" element={<Onboard />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/contact-us" element={<ContactUs />} />
 
