@@ -27,16 +27,13 @@ const textItemVariants: Variants = {
 };
 
 const techLogoVariants: Variants = {
-    hidden: { opacity: 0, scale: 0.6, y: 30 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
         opacity: 1,
-        scale: 1,
         y: 0,
         transition: {
-            type: "spring",
-            stiffness: 150,
-            damping: 12,
-            duration: 0.6
+            duration: 0.7, // Smoother, slightly longer duration
+            ease: "easeOut"
         }
     }
 };
@@ -45,10 +42,37 @@ const TechnologyStack: React.FC = () => {
     const techStackRef = useRef(null);
     const isTechStackInView = useInView(techStackRef, { once: true, amount: 0.3 });
     const techStackControls = useAnimation();
+    const iconGlowControls = useAnimation(); // New animation control for icon glow
 
     useEffect(() => {
-        if (isTechStackInView) techStackControls.start("visible");
-    }, [isTechStackInView, techStackControls]);
+        const sequence = async () => {
+            if (isTechStackInView) {
+                // Wait for the main section and card animations to complete
+                await techStackControls.start("visible");
+
+                // Start icon glow animation after cards are visible
+                // We'll apply this animation to the individual icon's motion.div
+                // The `filter` property will be animated using the CSS variable
+                // that is set on the parent motion.div for each icon.
+                iconGlowControls.start({
+                    filter: [
+                        'drop-shadow(0 0 5px rgba(255, 255, 255, 0))', // Start with no glow
+                        'drop-shadow(0 0 10px var(--icon-color, #fff))', // Glow with tech's color
+                        'drop-shadow(0 0 5px rgba(255, 255, 255, 0))'  // Fade out glow
+                    ],
+                    transition: {
+                        duration: 2.5,
+                        ease: "easeOut",
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        delay: 0.5 // Small delay after cards appear before glow starts
+                    }
+                });
+            }
+        };
+        sequence();
+    }, [isTechStackInView, techStackControls, iconGlowControls]);
+
 
     // Data for Technologies
     const technologies = [
@@ -67,10 +91,10 @@ const TechnologyStack: React.FC = () => {
     ];
 
     return (
-        <section className="py-16 md:py-24 bg-gradient-to-br from-teal-50 to-cyan-100 dark:from-gray-900 dark:to-teal-900 text-gray-800 dark:text-gray-200 overflow-hidden relative font-sans">
-            {/* Background elements */}
-            <div className="absolute top-1/4 right-0 w-64 h-64 bg-teal-300 dark:bg-teal-700 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-            <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-cyan-300 dark:bg-cyan-700 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <section className="py-16 md:py-24 bg-gradient-to-br from-[#0A192F] to-[#122A4E] text-gray-200 overflow-hidden relative font-sans">
+            {/* Background elements - Adjusted colors for dark theme */}
+            <div className="absolute top-1/4 right-0 w-64 h-64 bg-[#0F284B] rounded-full mix-blend-screen filter blur-xl opacity-30 animate-blob"></div>
+            <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-[#1A3D6E] rounded-full mix-blend-screen filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
 
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Technology Stack Grid */}
@@ -81,8 +105,8 @@ const TechnologyStack: React.FC = () => {
                     animate={techStackControls}
                     variants={sectionVariants}
                 >
-                    <motion.h3 variants={textItemVariants} className="text-3xl sm:text-4xl lg:text-5xl font-bold text-teal-700 dark:text-teal-400 mb-10 text-center leading-tight font-display drop-shadow-sm">
-                        Our Core Technologies <FontAwesomeIcon icon={faGears} className="ml-3 text-teal-600 dark:text-teal-300" />
+                    <motion.h3 variants={textItemVariants} className="text-3xl sm:text-4xl lg:text-5xl font-bold text-teal-400 mb-10 text-center leading-tight font-display drop-shadow-sm">
+                        Our Core Technologies <FontAwesomeIcon icon={faGears} className="ml-3 text-teal-300" />
                     </motion.h3>
                     <motion.div
                         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 md:gap-8 lg:gap-10 justify-items-center"
@@ -97,29 +121,30 @@ const TechnologyStack: React.FC = () => {
                         {technologies.map((tech, index) => (
                             <motion.div
                                 key={index}
-                                className="flex flex-col items-center p-4 sm:p-5 bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-xl w-full max-w-[160px] aspect-square justify-center
-                                            border-b-4 border-opacity-80 dark:border-opacity-90 transition-all duration-300
-                                            hover:shadow-2xl dark:hover:shadow-glow-tech-card cursor-pointer group"
+                                className="flex flex-col items-center p-4 sm:p-5 bg-[#0D203A] rounded-xl shadow-lg w-full max-w-[160px] aspect-square justify-center
+                                         border-b-4 border-opacity-80 transition-all duration-300
+                                         hover:shadow-2xl hover:shadow-cyan-500/30 cursor-pointer group"
                                 style={{ borderColor: tech.color }}
                                 variants={techLogoVariants}
                                 whileHover={{
-                                    scale: 1.08,
-                                    y: -5,
-                                    rotateX: 5,
-                                    rotateY: 5,
-                                    boxShadow: `0 15px 30px rgba(0, 0, 0, 0.2), 0 0 25px ${tech.color}80`
+                                    y: -8, // Subtle lift on hover
+                                    boxShadow: `0 15px 30px rgba(0, 0, 0, 0.4), 0 0 25px ${tech.color}80`
                                 }}
-                                whileTap={{ scale: 0.95 }}
+                                whileTap={{ y: -2 }}
                             >
-                                <FontAwesomeIcon
-                                    icon={tech.icon}
-                                    className={`text-5xl md:text-6xl mb-3 drop-shadow-xl transition-colors duration-300`}
-                                    style={{ color: tech.color }}
-                                    onMouseEnter={(e) => e.currentTarget.classList.add('animate-pulse-subtle')}
-                                    onMouseLeave={(e) => e.currentTarget.classList.remove('animate-pulse-subtle')}
-                                />
-                                <h4 className="font-bold text-lg sm:text-xl text-gray-700 dark:text-gray-200 text-center leading-tight">{tech.name}</h4>
-                                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm text-center mt-1 opacity-90">{tech.desc}</p>
+                                {/* Corrected line: Passing --icon-color as a CSS variable */}
+                                <motion.div
+                                    animate={iconGlowControls}
+                                    style={{ '--icon-color': tech.color }} // This is correct for passing the CSS variable
+                                >
+                                    <FontAwesomeIcon
+                                        icon={tech.icon}
+                                        className={`text-5xl md:text-6xl mb-3 drop-shadow-xl transition-colors duration-300`}
+                                        style={{ color: tech.color }}
+                                    />
+                                </motion.div>
+                                <h4 className="font-bold text-lg sm:text-xl text-gray-100 text-center leading-tight">{tech.name}</h4>
+                                <p className="text-gray-400 text-xs sm:text-sm text-center mt-1 opacity-90">{tech.desc}</p>
                             </motion.div>
                         ))}
                     </motion.div>
