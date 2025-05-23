@@ -5,18 +5,18 @@
 /* Custom styles */
 @layer components {
   .text-gradient-primary {
-    /* Adjusted for dark mode default - often gradient colors might be lighter for dark backgrounds */
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-blue-300;
+    /* Changed to shining light blue gradient */
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-cyan-200;
   }
 
   .btn-primary {
-    /* Adjusted for dark mode default - darker background, lighter text */
-    @apply px-6 py-3 bg-indigo-700 text-white font-medium rounded-lg shadow-lg hover:bg-indigo-800 transition-colors;
+    /* Adjusted for light blue theme */
+    @apply px-6 py-3 bg-blue-600 text-white font-medium rounded-lg shadow-lg hover:bg-blue-700 transition-colors;
   }
 
   .btn-secondary {
-    /* Adjusted for dark mode default - darker background, lighter text, adjusted border */
-    @apply px-6 py-3 bg-gray-800 text-indigo-400 font-medium rounded-lg shadow-lg hover:bg-gray-700 transition-colors border border-indigo-700;
+    /* Adjusted for light blue theme */
+    @apply px-6 py-3 bg-gray-100 text-blue-700 font-medium rounded-lg shadow-lg hover:bg-gray-200 transition-colors border border-blue-600;
   }
 
   .section-padding {
@@ -24,40 +24,40 @@
   }
 
   .card {
-    /* Adjusted for dark mode default */
-    @apply bg-gray-800 rounded-lg shadow-md p-6 transition-all hover:shadow-lg;
+    /* Adjusted for a lighter card background that fits a light theme, if needed */
+    @apply bg-white rounded-lg shadow-md p-6 transition-all hover:shadow-lg;
   }
 }
 
 /* Add these to your main CSS file (e.g., src/index.css) */
 
-/* Keyframes for different color glows (now default dark mode values) */
+/* Keyframes for different color glows (now light mode friendly blue variations) */
 @keyframes glow-blue {
-    0% { box-shadow: 0 0 5px rgba(96, 165, 250, 0.5), 0 0 10px rgba(96, 165, 250, 0.3); }
-    100% { box-shadow: 0 0 10px rgba(96, 165, 250, 0.8), 0 0 20px rgba(96, 165, 250, 0.5); }
+    0% { box-shadow: 0 0 5px rgba(100, 180, 255, 0.5), 0 0 10px rgba(100, 180, 255, 0.3); }
+    100% { box-shadow: 0 0 10px rgba(100, 180, 255, 0.8), 0 0 20px rgba(100, 180, 255, 0.5); }
 }
 @keyframes glow-green {
-    0% { box-shadow: 0 0 5px rgba(52, 211, 153, 0.5), 0 0 10px rgba(52, 211, 153, 0.3); }
-    100% { box-shadow: 0 0 10px rgba(52, 211, 153, 0.8), 0 0 20px rgba(52, 211, 153, 0.5); }
+    0% { box-shadow: 0 0 5px rgba(150, 250, 200, 0.5), 0 0 10px rgba(150, 250, 200, 0.3); }
+    100% { box-shadow: 0 0 10px rgba(150, 250, 200, 0.8), 0 0 20px rgba(150, 250, 200, 0.5); }
 }
 @keyframes glow-yellow {
-    0% { box-shadow: 0 0 5px rgba(253, 224, 71, 0.5), 0 0 10px rgba(253, 224, 71, 0.3); }
-    100% { box-shadow: 0 0 10px rgba(253, 224, 71, 0.8), 0 0 20px rgba(253, 224, 71, 0.5); }
+    0% { box-shadow: 0 0 5px rgba(255, 240, 100, 0.5), 0 0 10px rgba(255, 240, 100, 0.3); }
+    100% { box-shadow: 0 0 10px rgba(255, 240, 100, 0.8), 0 0 20px rgba(255, 240, 100, 0.5); }
 }
 @keyframes glow-indigo {
-    0% { box-shadow: 0 0 5px rgba(129, 140, 248, 0.5), 0 0 10px rgba(129, 140, 248, 0.3); }
-    100% { box-shadow: 0 0 10px rgba(129, 140, 248, 0.8), 0 0 20px rgba(129, 140, 248, 0.5); }
+    0% { box-shadow: 0 0 5px rgba(150, 180, 255, 0.5), 0 0 10px rgba(150, 180, 255, 0.3); }
+    100% { box-shadow: 0 0 10px rgba(150, 180, 255, 0.8), 0 0 20px rgba(150, 180, 255, 0.5); }
 }
 @keyframes glow-purple {
-    0% { box-shadow: 0 0 5px rgba(192, 132, 252, 0.5), 0 0 10px rgba(192, 132, 252, 0.3); }
-    100% { box-shadow: 0 0 10px rgba(192, 132, 252, 0.8), 0 0 20px rgba(192, 132, 252, 0.5); }
+    0% { box-shadow: 0 0 5px rgba(200, 160, 255, 0.5), 0 0 10px rgba(200, 160, 255, 0.3); }
+    100% { box-shadow: 0 0 10px rgba(200, 160, 255, 0.8), 0 0 20px rgba(200, 160, 255, 0.5); }
 }
 @keyframes glow-cyan {
-    0% { box-shadow: 0 0 5px rgba(103, 232, 249, 0.5), 0 0 10px rgba(103, 232, 249, 0.3); }
-    100% { box-shadow: 0 0 10px rgba(103, 232, 249, 0.8), 0 0 20px rgba(103, 232, 249, 0.5); }
+    0% { box-shadow: 0 0 5px rgba(130, 240, 255, 0.5), 0 0 10px rgba(130, 240, 255, 0.3); }
+    100% { box-shadow: 0 0 10px rgba(130, 240, 255, 0.8), 0 0 20px rgba(130, 240, 255, 0.5); }
 }
 
-/* Hover glow effects for technology logos (now use the new default keyframes) */
+/* Hover glow effects for technology logos */
 .group.glow-logo-blue:hover { animation: glow-blue 0.8s forwards; }
 .group.glow-logo-green:hover { animation: glow-green 0.8s forwards; }
 .group.glow-logo-yellow:hover { animation: glow-yellow 0.8s forwards; }
@@ -66,53 +66,51 @@
 .group.glow-logo-cyan:hover { animation: glow-cyan 0.8s forwards; }
 
 
-/* Path glow animations for n8n visualization (now default dark mode values) */
+/* Path glow animations for n8n visualization */
 @keyframes path-glow-yellow {
-    0%, 100% { filter: drop-shadow(0 0 2px rgba(253, 224, 71, 0.7)); }
-    50% { filter: drop-shadow(0 0 8px rgba(253, 224, 71, 1)); }
+    0%, 100% { filter: drop-shadow(0 0 2px rgba(255, 240, 100, 0.7)); }
+    50% { filter: drop-shadow(0 0 8px rgba(255, 240, 100, 1)); }
 }
 @keyframes path-glow-indigo {
-    0%, 100% { filter: drop-shadow(0 0 2px rgba(129, 140, 248, 0.7)); }
-    50% { filter: drop-shadow(0 0 8px rgba(129, 140, 248, 1)); }
+    0%, 100% { filter: drop-shadow(0 0 2px rgba(150, 180, 255, 0.7)); }
+    50% { filter: drop-shadow(0 0 8px rgba(150, 180, 255, 1)); }
 }
 
 .path-glow-yellow { animation: path-glow-yellow 2s infinite alternate; }
 .path-glow-indigo { animation: path-glow-indigo 2s infinite alternate; }
 
-/* Removed dark prefixed path-glow classes as they are now the default */
-
 /* For a subtle pulse animation for glowing effects */
 @keyframes pulse-glow {
   0% {
-      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+      filter: drop-shadow(0 0 5px rgba(100, 200, 255, 0.5)); /* Light blue glow */
   }
   50% {
-      filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+      filter: drop-shadow(0 0 15px rgba(100, 200, 255, 0.8));
   }
   100% {
-      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+      filter: drop-shadow(0 0 5px rgba(100, 200, 255, 0.5));
   }
 }
-.animate-pulse-glow-white {
+.animate-pulse-glow-white { /* Renamed for clarity, though it's now blue */
   animation: pulse-glow 2s infinite ease-in-out;
 }
 
 /* For a more pronounced shadow/glow on hover (used for tech logos) */
 .hover-glow:hover {
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8))
-          drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
+  filter: drop-shadow(0 0 8px rgba(100, 200, 255, 0.8)) /* Light blue glow */
+          drop-shadow(0 0 20px rgba(100, 200, 255, 0.6));
 }
 
 /* For n8n special cards glow */
 @keyframes glow-cyan-pulse {
   0% {
-      box-shadow: 0 0 5px rgba(0, 255, 255, 0.4), 0 0 15px rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 5px rgba(0, 200, 255, 0.4), 0 0 15px rgba(0, 200, 255, 0.2); /* Adjusted to light blue-cyan */
   }
   50% {
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 25px rgba(0, 255, 255, 0.5);
+      box-shadow: 0 0 10px rgba(0, 200, 255, 0.8), 0 0 25px rgba(0, 200, 255, 0.5);
   }
   100% {
-      box-shadow: 0 0 5px rgba(0, 255, 255, 0.4), 0 0 15px rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 5px rgba(0, 200, 255, 0.4), 0 0 15px rgba(0, 200, 255, 0.2);
   }
 }
 .animate-glow-cyan-pulse {
