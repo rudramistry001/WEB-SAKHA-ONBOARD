@@ -93,10 +93,20 @@ const Navbar: React.FC = () => {
                     transition={{ duration: 0.5 }}
                     className="text-3xl font-extrabold relative"
                 >
-                    <Link to="/" className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-300 dark:to-purple-400 font-display drop-shadow-xl"
-                        style={{ textShadow: '0 0 8px rgba(99, 102, 241, 0.7), 0 0 15px rgba(124, 58, 237, 0.5)' }}>
-                        WEB सखा
-                    </Link>
+ <Link
+  to="/"
+  className="font-display text-[#00BFFF]"
+  style={{
+    textShadow: `
+      0 0 3px #00BFFF,
+      0 0 6px rgba(0, 191, 255, 0.6),
+      0 0 10px rgba(0, 191, 255, 0.3)
+    `,
+    color: '#00BFFF',
+  }}
+>
+  WEB सखा
+</Link>
                 </motion.div>
 
                 {/* Desktop Navigation - Hidden on mobile */}

@@ -54,23 +54,17 @@ const ContactUs = () => {
       <div className="max-w-4xl w-full bg-white rounded-lg shadow-lg p-8 grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left info section */}
         <div className="space-y-4 text-indigo-900">
-          <h2 className="text-2xl font-semibold mb-2">BHARAT INFOTECH SOLUTIONS</h2>
+          <h2 className="text-2xl font-semibold mb-2">WEB SAKHA SOLUTIONS </h2>
 
           <p className="font-semibold">Reg.Office:</p>
           <address className="not-italic mb-4">
-            104/209, Kamdhenu Complex,<br />
-            Opp. SBI, Near Gay Circle,<br />
-            Productivity Road, Vadodara, India-390020
+            C-21 Vaishnav Park Society,<br />
+           Near Bapod Police Station,<br />
+           Waghodia Road, Vadodara,390019
           </address>
 
-          <p className="font-semibold">Corp. Office:</p>
-          <address className="not-italic mb-4">
-            306-307, World Trade Centre,<br />
-            3rd Floor, Sayajigunj, Vadodara. India-390005
-          </address>
-
-          <p><span className="font-semibold">Mobile:</span> +91-7567148677</p>
-          <p><span className="font-semibold">Email:</span> <a href="mailto:info@bharatinfotechsolutions.com" className="text-indigo-600 underline">info@bharatinfotechsolutions.com</a></p>
+          <p><span className="font-semibold">Mobile:</span> +91-9974585969</p>
+          <p><span className="font-semibold">Email:</span> <a href="mailto:contact@websakha.com" className="text-indigo-600 underline">contact@websakha.com</a></p>
         </div>
 
         {/* Right form section */}

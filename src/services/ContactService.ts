@@ -9,7 +9,8 @@ export type ContactFormData = {
 }
 
 class ContactService {
-  private baseUrl = 'https://admin-panel-server-vercel.vercel.app/api/contact/submit-contact';
+  private baseUrl = 'https://server-web-sakha-on-board-contact-u.vercel.app/api/contact/submit-contact';
+  //https://server-web-sakha-on-board-contact-u-six.vercel.app/
 
   // Submit contact form
   async submitContactForm(contactData: ContactFormData): Promise<any> {
